@@ -1,0 +1,399 @@
+extras/exercises/00_pytorch_fundamentals_exercises.ipynb
+
+https://github.com/mrdbourke/pytorch-deep-learning/blob/main/extras/exercises/00_pytorch_fundamentals_exercises.ipynb
+
+
+Few Datasets (Machine Learning/Deep Learning)
+Images -- 1. fashion_mnist  (from tensorflow.keras.datasets import fashion_mnist)  -- (NN, MLP, CNN)
+Images -- 2. medical_mnist
+
+Text --1 .   boston_housing (from tensorflow.keras.datasets import boston_housing) (Logistic/ Linear ) regression
+Text --2 .   creditcard.csv (SVM)
+
+cat ~/.ssh/sshkeys.pub
+
+Time Series --1. Tesla stock predictions
+
+Option 1: Using SSH Keys (Recommended)
+	Step 1: Generate an SSH Key
+		1. Open Git Bash and run the following command:
+			ssh-keygen -t rsa -b 4096 -C "G24ait172@iitj.ac.in"
+			
+		
+		2. When prompted: 
+			* Press Enter to accept the default file location (e.g., ~/.ssh/id_rsa).
+			* Optionally, set a passphrase (leave blank for no passphrase).
+			
+		3. The SSH key pair (id_rsa and id_rsa.pub) will be generated and saved in the ~/.ssh directory.
+		
+	
+	Step 2: Add the SSH Key to GitHub
+		1. Display your public key by running:
+			cat ~/.ssh/id_rsa.pub   
+		
+		2. Copy the entire output (starts with ssh-rsa).
+		
+		ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCnC1nhz9qDrpgocWfdW8xdACNmEPYGNC+Yi7fozDAXSIfGBNUIWjgpIMcuZTkswt8iEuoK/jfu9pyGkvmndceVh4dHkA/FhFiS3AcB7SwG94p5RUewsrhyDVLA3KjFUgZJa1ynjYA79pzWa4ywCqtluR3VxkHQKgMk63c4k4sFph7SyW1wLRZFLYgIBq7FMw1MMjCsURI626/WB1oH1zus5dnZ+irPFsnUrQfhc7fVimt6iQqtPXGrwyAqABX7PuiY7a7UoQ5EOfIjY3jGjoBUlAgBHNDO1mV6AU26Q7KCyphGJSMFo1pfzwemKUYm4Elze/GV4uKixrebDHmwzbNVJ/Ju/JRNpR7CEYv9ueitHkywfcTLSkL+fjOia9IB6xYd2Iy5JR4lcBHmaut6gpYXauB1Cux9SaCAmnRMeBhvPC/z4r8TTIyMth/lIwU8egqKhNb2s8Ke4yF6SEEIP0muH34NzoasB/z7luw3TLITvUZcB03B8pa0GZLp1fvdN393jh6CKrQPfguCshWHnRpb/3X55oo0cUUtp2TxIFEOfwoe7ie2SripFuz+AI630V8PeGjMnSlbM+9R0ymNePb4MdWr25qXNjIfHL94/R1PKYLog4s+RQTQuu2gU1tK03qOw2VV/7InhXXK2FXw0ZcVaC+W2OXaMDY/PWdFhe7G3w== G24ait172@iitj.ac.in
+
+		
+		3. Go to your GitHub account:
+			* Open GitHub SSH Settings.
+			* Click "New SSH Key".
+			* In the "Title" field, name the key (e.g., "My Laptop Key").
+			* Paste the public key into the "Key" field and click "Add SSH Key".
+			
+	Step 3: Test the SSH Connection
+		1. Run the following command to test the connection:
+			ssh -T git@github.com
+			
+			The authenticity of host 'github.com (20.207.73.82)' can't be established.
+			ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
+			This key is not known by any other names.
+			
+			Note: Enetr Yes for confirmation and proceeed ahead.
+
+		2. If successful, you'll see a message like:
+			Hi Aman007Agg! You've successfully authenticated, but GitHub does not provide shell access.
+
+
+Yes, absolutely! Once you've set up the SSH connection, you can and should still configure your Git username and email globally using the following commands:
+
+git config --global user.name "Aman007Agg"
+git config --global user.email "G24ait172@iitj.ac.in"
+
+
+Option 2: Using HTTPS (No SSH Setup Required)
+	If you don't want to set up SSH keys, you can use HTTPS. You'll need to log in with your GitHub credentials each time you push/pull (or use a credential manager to save them)
+	
+	1. Clone a repository using HTTPS:
+		git clone https://github.com/Aman007Agg/<your-repo>.git
+
+	2. When prompted, enter your GitHub username and password (or a Personal Access Token if two-factor authentication is enabled).
+	
+	
+	3. After setting up the connection, configure Git with your GitHub username and email so commits are properly attributed to you.
+		* git config --global user.name "Aman007Agg"
+		* git config --global user.email "your_email@example.com"
+		
+		
+	4. Verify the Setup
+		* Test cloning a repository:
+			* git clone git@github.com:Aman007Agg/<your-repo>.git  # Use SSH
+				# OR
+			* git clone https://github.com/Aman007Agg/<your-repo>.git  # Use HTTPS
+			
+	5. Make changes, commit, and push
+			* git add .
+			* git commit -m "Test commit"
+			* git push origin main
+			
+			
+
+
+-------------------------------ML-OPs-----Assignment 1------------------------------------
+
+https://github.com/Aman007Agg/MLOps-Jan2025			
+
+
+C:\Aman_Docs\IIT_Jodhpur_M-Tech_AI_ML\Course_Start\Trimester-2_Course\ML_OPs\Assignment-1
+
+
+some basics :
+
+1. Delete All Files in the Main Branch: To remove all files, use the following command:
+--> git rm -r *
+
+2. Commit the Changes:
+--> git commit -m "Removed all files from main branch"
+
+3. Push the Changes to the Remote:
+--> git push origin main
+
+4. Steps to Use a Tag When Recovering the Branch
+	a. Find the Commit Hash of the Deleted Branch: Use git reflog or git log to find the hash of the last commit on the deleted branch:
+-->		git reflog
+	
+	b. Tag the Commit: Once you identify the commit hash (e.g., abc1234), you can tag it:
+-->		git tag recovered_Assignment_1 abc1234
+
+	c. Push the Tag to the Remote: Tags are not pushed automatically. Push the tag explicitly:
+-->		git push origin recovered_Assignment_1
+
+	d. Create a Branch from the Tag (Optional): If you want to create the branch from the tag later, you can do:
+-->		git checkout -b Assignment_1 recovered_Assignment_1
+
+
+git push origin --force Assignment_1
+
+
+--------Important------
+
+1. Switch to the Main Branch --> git checkout main
+2. Delete the Assignment_1 Branch (Delete locally) --> git branch -d Assignment_1
+3. delete the Assignment_1 branch remotely: --> git push origin --delete Assignment_1
+
+Note: *2. Forcefully Delete the Branch Locally --> git branch -D Assignment_1
+	*3.Delete the Branch Remotely --> git push origin --delete Assignment_1
+    *4 Verify the Deletion   
+		* Check Local Branches: --> git branch
+		* Check Remote Branches: --> git branch -r
+
+
+
+4. Create Folders in the Main Branch
+You can create folders in the main branch and add them to the repository:
+
+Create Folders Locally:--> mkdir Assignment_1
+						   mkdir Lecture_1
+						   mkdir Lecture_2
+						   mkdir Lecture_3
+
+5. Add Placeholder Files in Each Folder:
+Git doesn’t track empty folders, so add a placeholder file in each folder:
+
+echo "This is the Assignment_1 folder." > Assignment_1/README.md
+echo "This is the Lecture_1 folder." > Lecture_1/README.md
+echo "This is the Lecture_2 folder." > Lecture_2/README.md
+echo "This is the Lecture_3 folder." > Lecture_3/README.md
+
+
+6. Stage and Commit the Folders
+Stage the changes: --> git add .
+
+7. Commit the changes:
+git commit -m "Added folders: Assignment_1, Lecture_1, Lecture_2, Lecture_3"
+
+
+8.  Push Changes to the Remote Repository --> 	git push origin main
+
+
+Note:
+
+1. Add the File to the Repository
+Open your terminal or Git Bash.
+
+Make sure you're in the root directory of your Git repository.
+
+Verify that you're on the main branch:
+--> git branch
+--> git checkout main
+--> git add Assignment_1/<filename>
+--> git commit -m "Added <filename> to Assignment_1 folder"
+--> git push origin main
+
+
+
+git add Lecture_3/Lec_03_Data_Preprocessing_Normalization.pdf Lecture_3/Lec03_Visualization.ipynb Lecture_3/ML_Ops_Practical_03_Data_Visualization.ipynb
+
+
+
+---------------------DOCKER-----------------------------------------
+
+$ docker images
+$ docker ps
+$ docker ps -a 
+$ docker pull python:latest 
+$ docker images
+$ docker pull pyhton:3.12
+$ docker images
+$ docker run -it python:latest
+>>> print("hello")
+hello
+>>> exit()
+$ docker ps
+$ docker ps -a
+$ docker start conainterID (replace with actual container ID)
+$ docker ps
+$ docker attach conainterID
+>>> a= 3
+	File `<python-input-0>`, line 1
+		a=3
+>>> print("hello")
+hello
+>>>	exit()
+
+$ docker ps
+$ docker run -it python:latest	
+$ docker ps
+$ docker attach conainterID
+>>> print("hello")
+hello
+>>>	exit()
+$ docker logs conainterID
+
+$ mkdir myapp
+$ cd myapp
+$ ls
+$ nano app.py
+print("Hello from Aman")
+$ python3 app.py
+Hello from Aman
+
+$ nano Dockerfile
+From python:latest
+
+WORKDIR /home/rudy/app
+
+COPY app.py "."
+
+CMD ["python", "app.py"]
+// save the Dockerfile
+
+$ ls
+$ cd..
+$ docker build -t myapp myapp/
+$ docker images
+$ docker run myapp
+
+$ cd myapp
+$ cat Dockerfile
+
+$ docker exec -it conainterID // gives error if container is not running
+
+$ docker start containerID
+$ docker exec -it conainterID // gives error if container is not running
+
+$ docker run -it -v /home/rudy/myapp:/home python:latest
+
+$ docker stop	
+
+$ docker image rm -f python:3.12
+
+$ docker images
+
+
+// pushing the docker images
+
+$ docker login
+
+$ docker push myapp:latest // resource is denied
+
+$ docker tag myapp rudy2979/test
+
+$ docker images
+
+$ docker push rudy2979/test
+
+for demo kubernetes we are using GCP (Google Cloud Platform)
+which has Kunbernetes Engine -> Kubernetes Cluster
+
+$ kubectl
+$ kubectl get pods
+$ kubectl get services
+$ nano app-deploy.yaml
+$ kubectl get deployments
+$ kubectl apply -f app-deploy.yaml
+$ kubectl get pods
+$ kubectl describe pods my-deployment2
+$ kubectl scale deployment my-deployment2 --replicas=2
+$ kubectl get pods
+
+
+
+
+
+---------------------DOCKER---------On Windows-------------28-Jan-2025-----------------
+
+// creating a testapp folder and a project
+npx create-react-app testapp --use-npm --legacy-peer-deps
+
+cd testapp
+npm install web-vitals
+
+
+$ docker pull python:latest 
+$ docker images
+$ docker pull pyhton:3.12
+$ docker images
+$ docker run -it python:latest
+>>> print("hello")
+hello
+>>> exit()
+$ docker ps
+$ docker ps -a
+
+
+
+C:\Users\aman0\PycharmProjects\pythonTreeExample\ZigZagProblem.py
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

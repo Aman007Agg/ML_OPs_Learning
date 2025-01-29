@@ -1,0 +1,157 @@
+
+---------------------DOCKER------------------Lecture 6--ML-OPs--------------------
+
+$ docker images
+$ docker ps
+$ docker ps -a 
+$ docker pull python:latest 
+$ docker images
+$ docker pull pyhton:3.12
+$ docker images
+$ docker run -it python:latest
+>>> print("hello")
+hello
+>>> exit()
+$ docker ps
+$ docker ps -a
+$ docker start conainterID (replace with actual container ID)
+$ docker ps
+$ docker attach conainterID
+>>> a= 3
+	File `<python-input-0>`, line 1
+		a=3
+>>> print("hello")
+hello
+>>>	exit()
+
+$ docker ps
+$ docker run -it python:latest	
+$ docker ps
+$ docker attach conainterID
+>>> print("hello")
+hello
+>>>	exit()
+$ docker logs conainterID
+
+$ mkdir myapp
+$ cd myapp
+$ ls
+$ nano app.py
+print("Hello from Aman")
+$ python3 app.py
+Hello from Aman
+
+$ nano Dockerfile
+From python:latest
+
+WORKDIR /home/rudy/app
+
+COPY app.py "."
+
+CMD ["python", "app.py"]
+// save the Dockerfile
+
+$ ls
+$ cd..
+$ docker build -t myapp myapp/
+$ docker images
+$ docker run myapp
+
+$ cd myapp
+$ cat Dockerfile
+
+$ docker exec -it conainterID // gives error if container is not running
+
+$ docker start containerID
+$ docker exec -it conainterID // gives error if container is not running
+
+$ docker run -it -v /home/rudy/myapp:/home python:latest
+
+$ docker stop	
+
+$ docker image rm -f python:3.12
+
+$ docker images
+
+
+// pushing the docker images
+
+$ docker login
+
+$ docker push myapp:latest // resource is denied
+
+$ docker tag myapp rudy2979/test
+
+$ docker images
+
+$ docker push rudy2979/test
+
+for demo kubernetes we are using GCP (Google Cloud Platform)
+which has Kunbernetes Engine -> Kubernetes Cluster
+
+$ kubectl
+$ kubectl get pods
+$ kubectl get services
+$ nano app-deploy.yaml
+$ kubectl get deployments
+$ kubectl apply -f app-deploy.yaml
+$ kubectl get pods
+$ kubectl describe pods my-deployment2
+$ kubectl scale deployment my-deployment2 --replicas=2
+$ kubectl get pods
+
+
+
+
+
+---------------------DOCKER---------On Windows-------------28-Jan-2025-----------------
+
+// creating a testapp folder and a project
+npx create-react-app testapp --use-npm --legacy-peer-deps
+
+cd testapp
+npm install web-vitals
+
+
+$ docker pull python:latest 
+$ docker images
+$ docker pull pyhton:3.12
+$ docker images
+$ docker run -it python:latest
+>>> print("hello")
+hello
+>>> exit()
+$ docker ps
+$ docker ps -a
+
+
+
+C:\Users\aman0\PycharmProjects\pythonTreeExample\ZigZagProblem.py
+
+
+
+------------------------------------Docker Assignment02--------------------------------------------------------
+
+print("Hello from the container, Roll No: G24AIT172")
+
+docker push aman007agg/docker-assignment-python-hello:tagname
+
+docker pull aman007agg/docker-assignment-python-hello
+
+docker run --rm aman007agg/docker-assignment-python-hello
+
+docker push aman007agg/docker-assignment-python-hello
+
+docker pull aman007agg/docker-assignment-python-hello:latest
+
+# Use the official Python Alpine image
+FROM python:3.11-alpine
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy hello.py into the container
+COPY hello.py .
+
+# Command to run the Python script
+CMD ["python", "hello.py"]
